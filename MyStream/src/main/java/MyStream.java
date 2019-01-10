@@ -5,7 +5,6 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@Data
 @AllArgsConstructor
 public class MyStream<T> {
 
@@ -27,5 +26,9 @@ public class MyStream<T> {
             newCollection.add(function.apply(value));
         }
         return new MyStream<R>(newCollection);
+    }
+
+    List<T> getResult(){
+        return myStreamContent;
     }
 }
