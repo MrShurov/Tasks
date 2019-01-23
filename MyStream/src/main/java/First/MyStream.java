@@ -1,7 +1,9 @@
-import lombok.AllArgsConstructor;
-import lombok.Data;
+package First;
 
-import java.util.*;
+import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
