@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String... args) {
-        MyStream myStream = MyStream.of(Arrays.asList(1, 2, 3, 4, 5)).filter(x -> x > 2).map(x -> x + 2);;
+        MyStream myStream = MyStream.of(Arrays.asList(1, 2, 3, 4, 5)).filter1(x -> x > 2).map1(x -> x + 2);;
         System.out.println("NOT EXECUTED YET");
         myStream.getResultInConsole();
     }

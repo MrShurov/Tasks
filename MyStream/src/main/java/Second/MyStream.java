@@ -25,12 +25,12 @@ public class MyStream<T> {
         return of(Arrays.asList(elements));
     }
 
-    public <U> MyStream<U> map(Function<T, U> function) {
+    public <U> MyStream<U> map1(Function<T, U> function) {
         System.out.println("map");
         return new MyStream<U>(action -> forEach(elements -> action.accept(function.apply(elements))));
     }
 
-    public MyStream<T> filter(Predicate<T> predicate) {
+    public MyStream<T> filter1(Predicate<T> predicate) {
         System.out.println("filter");
         return new MyStream<T>(action -> forEach(elements -> {
             if(predicate.test(elements))
