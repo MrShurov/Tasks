@@ -1,35 +1,36 @@
 package First;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class MyStream<T> {
+@Data
+class MyStream<T> {
 
     private List<T> myStreamContent;
     private ArrayList<MyStreamAction> myStreamActions;
 
-    public MyStream(List<T> myStreamContent) {
+    MyStream(List<T> myStreamContent) {
         this.myStreamContent = myStreamContent;
         this.myStreamActions = new ArrayList<>();
     }
 
-    private MyStream(ArrayList<MyStreamAction> myStreamActions) {
+    private MyStream(List<T> myStreamContent, ArrayList<MyStreamAction> myStreamActions) {
+        this.myStreamContent = myStreamContent;
         this.myStreamActions = myStreamActions;
     }
 
     MyStream<T> filter(Predicate<T> predicate) {
-        myStreamActions.add(new MyStreamAction<Predicate<T>>(predicate, "filter", myStreamContent));
-        return new MyStream<T>(this.myStreamActions);
+        myStreamActions.add(new MyStreamFilter<Predicate<T>>(predicate, myStreamContent));
+        return new MyStream<T>(this.myStreamContent, this.myStreamActions);
     }
 
-    <R> MyStream<R> map(Function<T, R> function) {
-        myStreamActions.add(new MyStreamAction<Function<T, R>>(function, "map",myStreamContent));
-        return new MyStream<R>(this.myStreamActions);
+    <R> MyStream<T> map(Function<T, R> function) {
+        myStreamActions.add(new MyStreamMap<Function<T, R>>(function, myStreamContent));
+        return new MyStream<T>(this.myStreamContent, this.myStreamActions);
     }
 
     private MyStream<T> lazyFilter(Predicate<T> predicate) {
@@ -51,12 +52,11 @@ public class MyStream<T> {
     }
 
     List<? super T> getResult() {
-        MyStream stream = new MyStream<>(myStreamActions);
-        stream.myStreamContent = myStreamActions.get(0).getMyStreamContent();
+        MyStream stream = new MyStream<>(myStreamContent, myStreamActions);
         for (MyStreamAction myStreamAction : myStreamActions) {
-            if (myStreamAction.getType().equals("filter")) {
+            if (myStreamAction.getClass().equals(MyStreamFilter.class)) {
                 stream = stream.lazyFilter((Predicate) myStreamAction.getBodyOfAction());
-            } else if (myStreamAction.getType().equals("map")) {
+            } else if (myStreamAction.getClass().equals(MyStreamMap.class)) {
                 stream = stream.lazyMap((Function) myStreamAction.getBodyOfAction());
             }
         }

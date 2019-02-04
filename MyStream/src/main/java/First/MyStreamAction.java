@@ -2,13 +2,18 @@ package First;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @AllArgsConstructor
 @Data
-public class MyStreamAction<T> {
+@NoArgsConstructor
+class MyStreamAction<T> {
     private T bodyOfAction;
-    private String type;
     private List myStreamContent;
+
+    MyStreamAction(T bodyOfAction) {
+        this.bodyOfAction = bodyOfAction;
+    }
 }
