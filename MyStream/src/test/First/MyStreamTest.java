@@ -25,6 +25,7 @@ public class MyStreamTest {
 
     @Test
     public void mapAndFilter(){
+        System.out.println(new MyStream<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8)).filter(e -> e > 4).map(e -> e + "Test").getResult());
         assert (new MyStream<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8)).filter(e -> e > 4).map(e -> e + "Test").getResult().equals(Arrays.asList("5Test","6Test","7Test","8Test")));
     }
 }
