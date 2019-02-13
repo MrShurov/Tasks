@@ -14,5 +14,5 @@ abstract class MyStreamAction<T> {
         this.bodyOfAction = bodyOfAction;
     }
 
-    abstract MyStream execute(List object);
+    abstract MyStream execute(List<T> object);
 }

@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-class MyStreamFilter<T> extends MyStreamAction<Predicate<T>> {
+class MyStreamFilter<T> extends MyStreamAction<T> {
 
-    MyStreamFilter(Predicate<T> bodyOfAction) {
+    MyStreamFilter(T bodyOfAction) {
         super(bodyOfAction);
     }
 
-    MyStream<T> execute(List content){
+    MyStream<T> execute(List<T> content){
         List<T> newCollection = new ArrayList<>();
-        List<T> myStreamContent = (List<T>)content;
-        for (T value : myStreamContent) {
-            if (getBodyOfAction().test(value)) {
+        Predicate<T> predicate = (Predicate<T>)getBodyOfAction();
+        for (T value : content) {
+            if (predicate.test(value)) {
                 newCollection.add(value);
             }
         }

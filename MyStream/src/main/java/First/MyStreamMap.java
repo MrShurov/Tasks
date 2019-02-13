@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-class MyStreamMap<T, R> extends MyStreamAction<Function<T,R>> {
+class MyStreamMap<T, R> extends MyStreamAction<T> {
 
-    MyStreamMap(Function<T, R> bodyOfAction) {
+    MyStreamMap(T bodyOfAction) {
         super(bodyOfAction);
     }
 
-    MyStream<R> execute(List content) {
+    MyStream<R> execute(List<T> content) {
         List<R> newCollection = new ArrayList<>();
-        List<T> myStreamContent = (List<T>)content;
         Function<T,R> function = (Function<T,R>)getBodyOfAction();
-        for (T value : myStreamContent) {
+        for (T value : content) {
             newCollection.add(function.apply(value));
         }
         return new MyStream<R>(newCollection);
