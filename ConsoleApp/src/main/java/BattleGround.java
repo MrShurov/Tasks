@@ -41,7 +41,7 @@ public class BattleGround {
         output.setRequired(true);
         options.addOption(output);
 
-        CommandLineParser parser = new DefaultParser();
+        CommandLineParser parser = new PosixParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd;
 

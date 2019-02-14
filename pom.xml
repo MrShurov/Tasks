@@ -27,5 +27,6 @@
 
     <modules>
         <module>MyStream</module>
+        <module>ConsoleApp</module>
     </modules>
 </project>
