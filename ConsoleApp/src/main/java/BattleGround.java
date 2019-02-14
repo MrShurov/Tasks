@@ -1,5 +1,8 @@
 import org.apache.commons.cli.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BattleGround {
 
     private static String fighterName1;
@@ -33,11 +36,11 @@ public class BattleGround {
     private static void parseCommandLine(String[] args) {
         Options options = new Options();
 
-        Option input = new Option("fighter1", "firstFighter", true, "first fighter");
+        Option input = new Option("fighter1", "firstFighter", true, "Enter name of first fighter");
         input.setRequired(true);
         options.addOption(input);
 
-        Option output = new Option("fighter2", "secondFighter", true, "second fighter");
+        Option output = new Option("fighter2", "secondFighter", true, "Enter name of second fighter");
         output.setRequired(true);
         options.addOption(output);
 
@@ -51,26 +54,19 @@ public class BattleGround {
             fighterName2 = cmd.getOptionValue("secondFighter");
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("utility-name", options);
+            formatter.printHelp("Parameters", options);
             System.exit(1);
         }
     }
 
     private static Character getFighter(String name) {
-        switch (name) {
-            case "Warrior":
-                return new Warrior();
-            case "Archer":
-                return new Archer();
-            case "Mage":
-                return new Mage();
-            case "Robber":
-                return new Robber();
-            case "Zombie":
-                return new Zombie();
-            default:
-                return new Human(name);
-        }
+        Map<String, Character> map = new HashMap<>();
+        map.put("Warrior",new Warrior());
+        map.put("Archer",new Archer());
+        map.put("Mage",new Mage());
+        map.put("Robber",new Robber());
+        map.put("Zombie",new Zombie());
+        return map.getOrDefault(name,new Human(name));
     }
 }
 
