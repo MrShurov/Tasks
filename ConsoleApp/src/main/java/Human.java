@@ -16,7 +16,7 @@ public class Human extends Character {
     }
 
     public void attack(Character character) {
-        System.out.println(getName() + " бьет противника!");
+        System.out.println(getName() + " beats the enemy!");
         character.takeDamage(randomDamage());
     }
 }

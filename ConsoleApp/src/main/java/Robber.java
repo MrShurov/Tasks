@@ -1,6 +1,6 @@
 public class Robber extends Character{
     Robber(){
-        super("Вор", 100,4);
+        super("Robber", 100,4);
     }
 
     public boolean isAlive() {
@@ -16,7 +16,7 @@ public class Robber extends Character{
     }
 
     public void attack(Character character) {
-        System.out.println(getName() + " бьёт противника!");
+        System.out.println(getName() + " beats the enemy!");
         character.takeDamage(randomDamage());
     }
 }

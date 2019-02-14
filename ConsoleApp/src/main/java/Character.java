@@ -40,11 +40,11 @@ public abstract class Character implements Mortal {
     void takeDamage(int damage) {
         setHealth(getHealth() - (damage - getArmour()));
         if (isAlive()) {
-            System.out.println(getName() + " получил " + damage + " урона!");
-            System.out.println("Осталось " + getHealth() + " здоровья!");
+            System.out.println(getName() + " received " + damage + " damage!");
+            System.out.println("Left " + getHealth() + " health!");
         } else {
-            System.out.println(getName() + " получил " + damage + " урона!");
-            System.out.println(getName() + " мертв!");
+            System.out.println(getName() + " received " + damage + " damage!");
+            System.out.println(getName() + " is dead!");
         }
     }
 }

@@ -1,6 +1,6 @@
 public class Mage extends Character {
     Mage() {
-        super("Маг", 70, 0);
+        super("Mage", 70, 0);
     }
 
     private int randomDamage() {
@@ -16,7 +16,7 @@ public class Mage extends Character {
     }
 
     public void attack(Character character) {
-        System.out.println(getName() + " посылает огненный шар в противника!");
+        System.out.println(getName() + " sends a fireball to the enemy!");
         character.takeDamage(randomDamage());
     }
 }

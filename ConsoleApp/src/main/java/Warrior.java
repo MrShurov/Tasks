@@ -1,6 +1,6 @@
 public class Warrior extends Character {
     Warrior(){
-       super("Воин", 150, 5);
+       super("Warrior", 150, 5);
     }
 
     private int randomDamage() {
@@ -16,7 +16,7 @@ public class Warrior extends Character {
     }
 
     public void attack(Character character){
-        System.out.println(getName() + " бьёт противника топором!");
+        System.out.println(getName() + " beats the enemy with an ax!");
         character.takeDamage(randomDamage());
     }
 }

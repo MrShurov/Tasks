@@ -1,6 +1,6 @@
 public class Archer extends Character {
     Archer() {
-        super("Лучник", 80, 1);
+        super("Archer", 80, 1);
     }
 
     private int randomDamage() {
@@ -16,7 +16,7 @@ public class Archer extends Character {
     }
 
     public void attack(Character character) {
-        System.out.println(getName() + " стреляет в противника!");
+        System.out.println(getName() + " shoots at the enemy!");
         character.takeDamage(randomDamage());
     }
 }
