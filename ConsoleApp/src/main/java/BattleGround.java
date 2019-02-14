@@ -17,7 +17,7 @@ public class BattleGround {
         int counter = 0;
         do {
             counter++;
-            System.out.println(counter + " Раунд:");
+            System.out.println(counter + " round:");
             if (one.isAlive()) {
                 one.attack(two);
             }
