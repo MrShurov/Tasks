@@ -1,5 +1,7 @@
 package First;
 
+import sun.misc.Unsafe;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -39,10 +41,25 @@ class MyStream<T> {
     }
 
     List<? super T> getResult() {
-        MyStream stream = new MyStream<>(myStreamContent, myStreamActions);
-        for (MyStreamAction myStreamAction : myStreamActions) {
-            stream = myStreamAction.execute(stream.myStreamContent);
+        ArrayList list = new ArrayList();
+        Object newObject = new Object();
+        boolean firstAction = true;
+        for (T element : myStreamContent) {
+            for (MyStreamAction myStreamAction : myStreamActions) {
+                if(firstAction){
+                    newObject = myStreamAction.execute(element);
+                    firstAction = false;
+                } else {
+                    if (newObject != null) {
+                        newObject = myStreamAction.execute(newObject);
+                    }
+                }
+            }
+            firstAction = true;
+            if (newObject != null) {
+                list.add(newObject);
+            }
         }
-        return stream.myStreamContent;
+        return list;
     }
 }

@@ -1,7 +1,7 @@
 package First;
 
-import java.util.ArrayList;
-import java.util.List;
+import sun.misc.Unsafe;
+
 import java.util.function.Function;
 
 class MyStreamMap<T, R> extends MyStreamAction<T> {
@@ -10,12 +10,8 @@ class MyStreamMap<T, R> extends MyStreamAction<T> {
         super(bodyOfAction);
     }
 
-    MyStream<R> execute(List<T> content) {
-        List<R> newCollection = new ArrayList<>();
+    Object execute(T object) {
         Function<T,R> function = (Function<T,R>)getBodyOfAction();
-        for (T value : content) {
-            newCollection.add(function.apply(value));
-        }
-        return new MyStream<R>(newCollection);
+        return function.apply(object);
     }
 }
