@@ -1,17 +1,22 @@
 package First;
 
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@Data
 class MyStream<T> {
 
     private List<T> myStreamContent;
     private List<MyStreamAction> myStreamActions;
+
+    List<T> getMyStreamContent() {
+        return myStreamContent;
+    }
+
+    List<MyStreamAction> getMyStreamActions() {
+        return myStreamActions;
+    }
 
     MyStream(List<T> myStreamContent) {
         this.myStreamContent = myStreamContent;
