@@ -1,3 +1,0 @@
-interface Mortal {
-    boolean isAlive();
-}

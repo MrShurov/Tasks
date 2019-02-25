@@ -1,4 +1,4 @@
-abstract class Character implements Mortal {
+abstract class Character{
     private String name;
     private int health;
     private int armour;
