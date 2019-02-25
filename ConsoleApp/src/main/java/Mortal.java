@@ -1,3 +1,3 @@
-public interface Mortal {
+interface Mortal {
     boolean isAlive();
 }

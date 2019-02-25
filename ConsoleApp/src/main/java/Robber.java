@@ -1,4 +1,4 @@
-public class Robber extends Character{
+class Robber extends Character{
     Robber(){
         super("Robber", 100,4);
     }

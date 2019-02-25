@@ -1,4 +1,4 @@
-public class Mage extends Character {
+class Mage extends Character {
     Mage() {
         super("Mage", 70, 0);
     }

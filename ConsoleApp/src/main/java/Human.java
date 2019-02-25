@@ -1,4 +1,4 @@
-public class Human extends Character {
+class Human extends Character {
     Human(String name) {
         super(name, 80, 1);
     }

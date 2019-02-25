@@ -1,4 +1,4 @@
-public class Zombie extends Character{
+class Zombie extends Character{
     private int counterResurrection = 0;
 
     Zombie(){

@@ -1,4 +1,4 @@
-public abstract class Character implements Mortal {
+abstract class Character implements Mortal {
     private String name;
     private int health;
     private int armour;
